@@ -101,25 +101,168 @@ Es fácil de usar, proporciona una variedad de herramientas y servicios integrad
 ## Gerente de Proyecto:
 Responsable de la planificación general del proyecto, coordinación del equipo y comunicación con los interesados tanto del personal de la biblioteca como la de los usuarios finales. Adicionalmente, se encarga de supervisar el progreso del proyecto y se asegura de que se cumplan los plazos y los objetivos asignando tareas y planificando los hitos.
 
+**Rol IAM - Propietario:** Este rol proporciona acceso completo a todos los recursos del proyecto y es adecuado para el gerente de proyecto que necesita supervisar y coordinar todo el proyecto.
+
 ## Desarrolladores de Software:
 Encargados de desarrollar la aplicación web y las funciones backend utilizando las tecnologías adecuadas como HTML, CSS, JavaScript, y las herramientas de Google Cloud como Google Cloud Functions y se puede dividir en equipos de frontend y backend.
 - Desarrollador Frontend: Creará la interfaz de usuario para la búsqueda de libros, solicitudes de préstamos y gestión de cuentas de usuario.
 - Desarrollador Backend: Construirá la lógica del servidor, integrando los servicios de Google Cloud para el almacenamiento y procesamiento de datos.
 
+**Rol IAM - Desarrollador de Google Cloud:** Este rol permite a los desarrolladores crear y administrar recursos en Google Cloud, lo que les permite trabajar en el desarrollo de la aplicación y la configuración de los servicios.
+
 ## Arquitecto de Soluciones:
 Encargado de diseñar la arquitectura de la aplicación, incluyendo la integración de los diferentes servicios de Google Cloud y definir los estándares de desarrollo y las mejores prácticas.
+
+**Rol IAM - Desarrollador de Google Cloud o Administrador de IAM:** Dependiendo de las responsabilidades específicas del arquitecto de soluciones, podrían necesitar los permisos proporcionados por uno de estos roles.
 
 ## Especialista en Google Cloud:
 Experto en los servicios de Google Cloud como Google Cloud Storage para almacenar los libros digitales, Firestore, Pub/Sub, etc. Adicionalmente asesora al equipo sobre cómo utilizar eficientemente estos servicios y resolver problemas técnicos relacionados.
 
+**Rol IAM - Desarrollador de Google Cloud o Administrador de IAM:** Dependiendo de las responsabilidades específicas del especialista en Google Cloud, podrían necesitar los permisos proporcionados por uno de estos roles.
+
 ## Especialista en Seguridad Informática:
 Encargado de la seguridad de la aplicación y la protección de los datos almacenados en Google Cloud, define también las políticas de seguridad, realiza pruebas de penetración y audita la infraestructura para identificar posibles vulnerabilidades. Finalmente configurará las reglas de seguridad en Google Cloud Firestore para garantizar el cifrado de datos en reposo y en tránsito.
+
+**Rol IAM - Administrador de IAM:** Este rol proporciona permisos para administrar los permisos de acceso, lo que es crucial para la gestión de la seguridad en Google Cloud
 
 ## Diseñador de Interfaz de Usuario (UI/UX):
 Responsable de diseñar una interfaz de usuario intuitiva, fácil de usar y atractiva para la aplicación. Trabaja en colaboración con los desarrolladores de frontend para implementar el diseño y garantizar una experiencia de usuario óptima.
 
+**Rol IAM - Editor de Proyecto:** Este rol permite al diseñador trabajar en recursos específicos del proyecto, como archivos de configuración y desarrollo de la interfaz de usuario
+
 ## Especialista en Integración y Pruebas:
 Encargado de integrar los diferentes componentes de la aplicación y realizar pruebas exhaustivas de funcionamiento y rendimiento. Desarrolla también casos de prueba, automatiza pruebas y coordina la resolución de problemas.
 
+**Rol IAM - Desarrollador de Google Cloud:** Este rol proporciona los permisos necesarios para trabajar en la integración y pruebas de la aplicación
+
 ## Especialista en Soporte Técnico: 
 Proporciona soporte técnico tanto durante el desarrollo como después del lanzamiento de la aplicación y responde a consultas de usuarios, soluciona problemas técnicos y gestiona actualizaciones y parches de seguridad.
+
+**Rol IAM - Lector de Proyecto:** Este rol proporciona permisos de solo lectura en los recursos del proyecto, lo que permite al especialista en soporte técnico acceder a la información necesaria para proporcionar asistencia
+
+## Estructura de conformación roles
+### Alam Pachecho (Gerente proyecto)
+```
+{
+  "bindings": [
+    {
+      "role": "roles/accesscontextmanager.policyAdmin",
+      "members": [
+        "user:alam.pacheco@cun.edu.co",
+        "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        "group:admins@example.com",
+        "domain:google.com"
+    ]
+} 
+```
+### Alam Pachecho (Soporte Técnico)
+```
+{
+  "role": " roles/cloudsupport.techSupportEditor",
+  "members": [
+    "user:alam.pacheco@cun.edu.co"
+            ]
+        }
+    ]
+}
+```
+### Ronal Ramirez (Especialista en Seguridad Informática)
+```
+{
+  "bindings": [
+    {
+      "role": "roles/iam.securityAdmin",
+      "members": [
+        "user:ronal.ramirezc@cun.edu.co",
+        "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        "group:admins@example.com",
+        "domain:google.com"
+    ]
+}
+```
+### Juan Camilo Bernal (Especialista en Seguridad Informática)
+```
+{
+  "role": " roles/iam.securityAdmin ",
+  "members": [
+    "user:juan.bernalccacab@cun.edu.co"
+            ]
+        }
+    ]
+}
+```
+### Jhojan Mendoza (Especialista en Google Cloud)
+```
+{
+  "bindings": [
+    {
+      "role": "roles/apigee.serviceAgent",
+      "members": [
+        "user:”jhojan.mendozar@cun.edu.co",
+        "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        "group:admins@example.com",
+        "domain:google.com"
+           ]
+        }
+    ]
+}
+```
+### Jhojan Mendoza (Especialista en Google Cloud)
+```
+{
+    "bindings": [
+        {
+            "role": " roles/managedidentities.admin",
+            "members: [
+                "user: “juan.bernalccacab@cun.edu.co",
+                "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+                "group:admins@example.com",
+                "domain:google.com"
+            ]
+}
+{
+    "role": " roles/apigee.serviceAgent ",
+    "members": [
+        "user:Daniel.gonzalezhe@cun.edu.co "
+            ]
+        }
+    ]
+}
+```
+```
+{
+    "bindings": [
+    {
+        "role": "roles/managedidentities.backupAdmin",
+        "members": [
+            "user:juan.bernalccacab@cun.edu.co",
+            "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+            "group:admins@example.com",
+            "domain:google.com"
+    ]
+}
+{
+    "role": " roles/managedidentities.backupAdmin",
+    "members": [
+        "user:jhojan.mendozar@cun.edu.co"
+            ]
+        }
+    ]
+}
+```
+
+```
+{
+    "bindings": [
+    {
+        "role": " roles/cloudsupport.techSupportEditor",
+        "members": [
+            "user:ronal.ramirezc@cun.edu.co",
+            "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+            "group:admins@example.com",
+            "domain:google.com"
+            ]
+        }
+    ]
+}
+```
