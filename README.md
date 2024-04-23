@@ -141,7 +141,7 @@ Proporciona soporte técnico tanto durante el desarrollo como después del lanza
 **Rol IAM - Lector de Proyecto:** Este rol proporciona permisos de solo lectura en los recursos del proyecto, lo que permite al especialista en soporte técnico acceder a la información necesaria para proporcionar asistencia
 
 ## Estructura de conformación roles
-### Alam Pachecho (Gerente proyecto)
+### Alam Pacheco (Gerente proyecto)
 ```
 {
   "bindings": [
@@ -155,7 +155,7 @@ Proporciona soporte técnico tanto durante el desarrollo como después del lanza
     ]
 } 
 ```
-### Alam Pachecho (Soporte Técnico)
+### Alam Pacheco (Soporte Técnico)
 ```
 {
   "role": " roles/cloudsupport.techSupportEditor",
@@ -212,7 +212,7 @@ Proporciona soporte técnico tanto durante el desarrollo como después del lanza
 {
     "bindings": [
         {
-            "role": " roles/managedidentities.admin",
+            "role": "roles/managedidentities.admin",
             "members: [
                 "user: “juan.bernalccacab@cun.edu.co",
                 "serviceAccount:my-other-app@appspot.gserviceaccount.com",
@@ -266,3 +266,6 @@ Proporciona soporte técnico tanto durante el desarrollo como después del lanza
     ]
 }
 ```
+
+## Diagrama de Jerarquía de Recursos
+<img src="imagenes\jerarquiaRecursos.jpeg" width="1500" height="450">
